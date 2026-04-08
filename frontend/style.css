@@ -1,4 +1,3 @@
-/* Reseteo general e importación de la fuente de los textos */
 * {
     margin: 0;
     padding: 0;
@@ -7,10 +6,8 @@
 
 body {
     font-family: 'Outfit', sans-serif;
-    /* Fondo muy oscuro como en interfaces profesionales */
     background-color: #0d1117;
     color: #e6edf3;
-    /* Luces de colores radiando desde las esquinas del fondo */
     background-image:
         radial-gradient(circle at 15% 50%, rgba(31, 111, 235, 0.15), transparent 30%),
         radial-gradient(circle at 85% 30%, rgba(137, 87, 229, 0.15), transparent 30%);
@@ -20,22 +17,17 @@ body {
     justify-content: center;
 }
 
-/* El gran contenedor flotante tipo "Cristal" */
 .container-main {
     width: 100%;
     max-width: 1100px;
     background: rgba(22, 27, 34, 0.6);
-    /* El truco del Glassmorphism: desenfocar el fondo que hay detrás */
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    /* Borde mega sutil */
     border-radius: 1.5rem;
     padding: 3rem;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-    /* Sombra elegante */
 }
 
-/* --- Título principal --- */
 header {
     text-align: center;
     margin-bottom: 3rem;
@@ -44,7 +36,6 @@ header {
 header h1 {
     font-size: 3rem;
     font-weight: 700;
-    /* Un título que en lugar de un color sólido, es un degradado */
     background: linear-gradient(90deg, #58a6ff 0%, #bc8cff 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -59,7 +50,6 @@ header p {
     font-size: 0.85rem;
 }
 
-/* --- El Panel del input y botón --- */
 .dashboard {
     display: flex;
     gap: 15px;
@@ -68,7 +58,6 @@ header p {
 
 .dashboard input {
     flex: 1;
-    /* Para que el input ocupe la mayor parte del espacio */
     padding: 1rem 1.5rem;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -79,7 +68,6 @@ header p {
     transition: all 0.3s;
 }
 
-/* Al hacer click en el Input se ilumina el borde en azul */
 .dashboard input:focus {
     outline: none;
     border-color: #58a6ff;
@@ -100,15 +88,12 @@ header p {
 
 .dashboard button:hover {
     transform: translateY(-3px);
-    /* Levanta el botón al pasar el mouse */
     box-shadow: 0 10px 25px rgba(31, 111, 235, 0.5);
 }
 
-/* --- Las Tarjetas de Temperatura y demás --- */
 .seccion-tarjetas {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* 3 columnas perfectamente divididas */
     gap: 25px;
     margin-bottom: 3rem;
 }
@@ -120,10 +105,8 @@ header p {
     padding: 2.5rem;
     text-align: center;
     transition: all 0.3s ease;
-    /* Transición súper suave */
 }
 
-/* Animación interactiva en las tarjetas */
 .tarjeta:hover {
     transform: translateY(-8px);
     background: rgba(255, 255, 255, 0.04);
@@ -143,7 +126,6 @@ header p {
     font-weight: 700;
 }
 
-/* --- El cuadro para la Gráfica interactiva --- */
 .graficas {
     background: rgba(255, 255, 255, 0.02);
     border-radius: 1.2rem;

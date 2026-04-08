@@ -4,7 +4,7 @@ const si = require('systeminformation');
 
 // Basic configuration
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
-const SPREADSHEET_ID = '1j60kcsoJ0gUFthTxunlnXg6aAT-0hX-M_TWzR0j12mc'; // Replace this in the .env file
+const SPREADSHEET_ID = '1j60kcsoJ0gUFthTxunlnXg6aAT-0hX-M_TWzR0j12mc';
 
 // Function to initialize Google API connection
 async function authGoogle() {
@@ -45,13 +45,13 @@ async function writeData() {
 async function sendDataToSheets(googleSheets, metrics) {
     try {
         await googleSheets.spreadsheets.values.append({
-                spreadsheetId: SPREADSHEET_ID,
-                range: 'Hoja 1!A:D', // Note: Left as 'Hoja 1' to avoid breaking your current Google Sheet
-                valueInputOption: 'USER_ENTERED',
-                resource: {
-                    values: [metrics]
-                }
-            });
+            spreadsheetId: SPREADSHEET_ID,
+            range: 'Hoja 1!A:D',
+            valueInputOption: 'USER_ENTERED',
+            resource: {
+                values: [metrics]
+            }
+        });
         console.log(`[${metrics[0]}] Data sent to Google Sheets: CPU ${metrics[1]}%, RAM ${metrics[2]}%, Temp ${metrics[3]}°C`);
     } catch (error) {
         console.error("Error sending data to Google Sheets:", error);

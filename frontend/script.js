@@ -8,12 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let historyChart;
 
-    // Initialize Chart.js
     function initChart() {
         historyChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: [], // Timestamps
+                labels: [],
                 datasets: [
                     {
                         label: 'CPU (%)',
@@ -72,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             color: 'rgba(255,255,255,0.05)'
                         },
                         min: 0,
-                        max: 100 // Adjust max based on expected temperatures
+                        max: 100
                     }
                 }
             }
@@ -125,7 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 throw new Error("The connected sheet does not have valid data yet.");
             }
 
-            // Update UI
             updateDashboard(data);
             btnConnecting.textContent = "Update Data";
             btnConnecting.style.background = "linear-gradient(135deg, #238636 0%, #2ea043 100%)";
@@ -134,28 +132,25 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error(error);
             alert("Error: " + error.message);
             btnConnecting.textContent = "Connect Data";
-            btnConnecting.style.background = ""; // Restore old style
+            btnConnecting.style.background = "";
         }
     }
 
     function updateDashboard(data) {
-        const latest = data[data.length - 1]; // Most recent record
+        const latest = data[data.length - 1];
 
         cpuValue.textContent = latest.cpu.toFixed(2) + "%";
         ramValue.textContent = latest.ram.toFixed(2) + "%";
         tempValue.textContent = latest.temp.toFixed(2) + "°C";
 
-        // Limit to 30 records to prevent cluttering the chart
         const startIdx = Math.max(0, data.length - 30);
         const plotData = data.slice(startIdx);
 
-        // Update internal chart data
         historyChart.data.labels = plotData.map(d => d.timestamp);
         historyChart.data.datasets[0].data = plotData.map(d => d.cpu);
         historyChart.data.datasets[1].data = plotData.map(d => d.ram);
         historyChart.data.datasets[2].data = plotData.map(d => d.temp);
 
-        // Render animation with new data
         historyChart.update();
     }
 
@@ -170,11 +165,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Auto-refresh periodically
     setInterval(() => {
         const sheetIdInput = inputSheetId.value.trim();
         if (sheetIdInput && btnConnecting.textContent === "Update Data") {
             fetchData(sheetIdInput);
         }
-    }, 10000); // Poll every 10 seconds
+    }, 10000);
 });
