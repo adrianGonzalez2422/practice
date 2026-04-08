@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Monitoring</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container-main">
+        <header>
+            <h1>Real-Time Monitoring</h1>
+            <p>Powered by Google Sheets</p>
+        </header>
+
+        <section class="dashboard">
+            <input type="text" id="sheetId" placeholder="Enter your Google Sheets ID">
+            <button id="btn-connecting">Connect Data</button>
+        </section>
+
+        <section class="seccion-tarjetas">
+            <div class="tarjeta">
+                <h3>CPU</h3>
+                <h2 id="cpu-value">--%</h2>
+            </div>
+            <div class="tarjeta">
+                <h3>RAM</h3>
+                <h2 id="ram-value">--%</h2>
+            </div>
+            <div class="tarjeta">
+                <h3>Temperature</h3>
+                <h2 id="temp-value">--°C</h2>
+            </div>
+        </section>
+
+        <section class="graficas">
+            <div class="grafica">
+                <canvas id="graficasHistorial"></canvas>
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
