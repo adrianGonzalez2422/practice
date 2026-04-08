@@ -1,6 +1,6 @@
-require('dotenv').config();
-const { google } = require('googleapis');
-const si = require('systeminformation');
+import 'dotenv/config.js';
+import { google } from 'googleapis';
+import si from 'systeminformation';
 
 // Basic configuration
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
